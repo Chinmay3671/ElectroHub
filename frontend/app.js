@@ -32,21 +32,6 @@ function showAlert(message, isError = false) {
     }, 3500);
 }
 
-// Update the backend status banner
-function updateStatusBadge(online) {
-    isBackendOnline = online;
-    const badge = document.getElementById('backend-status');
-    if (!badge) return;
-
-    if (online) {
-        badge.className = 'status-bar status-online';
-        badge.innerHTML = '<strong>Backend Connected:</strong> Spring Boot REST API is ONLINE at <code>http://localhost:8081</code> (Live MySQL Sync)';
-    } else {
-        badge.className = 'status-bar status-offline';
-        badge.innerHTML = '<strong>Backend Offline:</strong> Spring Boot is not running on <code>http://localhost:8081</code>. Operating in Demo/Local mode. (Run <code>mvn spring-boot:run</code> to connect live database)';
-    }
-}
-
 // 1. Fetch and Display Products
 async function loadProducts() {
     const container = document.getElementById('products-container');
@@ -60,13 +45,13 @@ async function loadProducts() {
             const data = await response.json();
             if (Array.isArray(data) && data.length > 0) {
                 products = data;
-                updateStatusBadge(true);
+                isBackendOnline = true;
             }
         } else {
-            updateStatusBadge(false);
+            isBackendOnline = false;
         }
     } catch (err) {
-        updateStatusBadge(false);
+        isBackendOnline = false;
     }
 
     // Render product cards
@@ -111,7 +96,6 @@ async function handleAddToCart(productId) {
                 showAlert('Failed to add product to backend cart', true);
             }
         } catch (err) {
-            showAlert('Connection error. Operating in local mode.', true);
             addToLocalCart(productId, quantity);
         }
     } else {
@@ -141,7 +125,7 @@ function addToLocalCart(productId, quantity) {
         });
     }
 
-    showAlert(`Added ${product.name} (Qty: ${quantity}) to cart (local mode)!`);
+    showAlert(`Added ${product.name} (Qty: ${quantity}) to cart!`);
     renderCartTable(localCart);
 }
 
@@ -149,7 +133,6 @@ function addToLocalCart(productId, quantity) {
 async function loadCart() {
     if (isBackendOnline) {
         try {
-            // First check if cart total endpoint works
             const totalRes = await fetch(`${API_BASE}/api/cart/total`);
             if (totalRes.ok) {
                 const totalData = await totalRes.json();
@@ -157,7 +140,6 @@ async function loadCart() {
                 return;
             }
 
-            // Fallback to /api/cart/items
             const itemsRes = await fetch(`${API_BASE}/api/cart/items`);
             if (itemsRes.ok) {
                 const items = await itemsRes.json();
@@ -262,33 +244,6 @@ async function handleClearCart() {
     renderCartTable(localCart);
 }
 
-// 6. Load External Resources
-async function loadResources() {
-    const list = document.getElementById('resource-list');
-    if (!list) return;
-
-    if (isBackendOnline) {
-        try {
-            const res = await fetch(`${API_BASE}/api/resources`);
-            if (res.ok) {
-                const resources = await res.json();
-                if (Array.isArray(resources) && resources.length > 0) {
-                    list.innerHTML = resources.map(r => `
-                        <li>
-                            <strong>${escapeHtml(r.title)}:</strong>
-                            <a href="${escapeHtml(r.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(r.url)}</a>
-                            - ${escapeHtml(r.description || '')}
-                        </li>
-                    `).join('');
-                    return;
-                }
-            }
-        } catch (err) {
-            // Fall back to default static list
-        }
-    }
-}
-
 // Simple HTML Escaping for Security
 function escapeHtml(str) {
     if (!str) return '';
@@ -302,14 +257,11 @@ function escapeHtml(str) {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', async () => {
-    // Bind Clear Cart button
     const clearBtn = document.getElementById('clear-cart-btn');
     if (clearBtn) {
         clearBtn.addEventListener('click', handleClearCart);
     }
 
-    // Load initial data
     await loadProducts();
     await loadCart();
-    await loadResources();
 });
