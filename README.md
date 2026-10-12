@@ -1,4 +1,4 @@
-# ElectroHub — Electronics Shopping Mini Project
+﻿# ElectroHub â€” Electronics Shopping Mini Project
 
 A clean, beginner-friendly, backend-only electronics shopping RESTful API application developed with **Java 17+** and **Spring Boot**. Built as an Advanced Java college mini-project demonstrating core concepts including **Spring Core (IoC & Constructor Injection)**, **Spring MVC (REST APIs)**, **DTOs (Data Transfer Objects)**, **Spring Data JPA & Hibernate**, and **MySQL Persistence**.
 
@@ -13,7 +13,7 @@ A clean, beginner-friendly, backend-only electronics shopping RESTful API applic
 - **Spring Data JPA & Hibernate**: Object-Relational Mapping (ORM) and automated database schema generation
 - **Database**: MySQL 8.0+
 - **Build Tool**: Apache Maven 3.9+
-- **Architecture**: Clean 4-Layer Architecture (`Controller` → `Service` → `Repository` → `Database`)
+- **Architecture**: Clean 4-Layer Architecture (`Controller` â†’ `Service` â†’ `Repository` â†’ `Database`)
 - **DTOs & Validation**: Jakarta Bean Validation (`@Valid`, `@NotBlank`, `@Positive`, `@Min`)
 - **API Client**: Postman / cURL
 
@@ -50,54 +50,54 @@ Provides REST endpoints returning verified external URLs for electronics learnin
 
 ```
 d:\mini-project/
-├── pom.xml                                  # Maven dependencies and build configuration
-├── postman/
-│   └── ElectroHub_Postman_Collection.json   # Ready-to-import Postman API collection
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/
-│   │   │       └── electrohub/
-│   │   │           ├── ElectroHubApplication.java       # Spring Boot main runner
-│   │   │           ├── config/
-│   │   │           │   ├── DataInitializer.java        # Seeds initial sample electronics
-│   │   │           │   └── ResourceConfig.java         # External URLs & Google Drive config
-│   │   │           ├── controller/
-│   │   │           │   ├── CartController.java         # /api/cart endpoints
-│   │   │           │   ├── ProductController.java      # /api/products endpoints
-│   │   │           │   └── ResourceController.java     # /api/resources endpoints
-│   │   │           ├── dto/
-│   │   │           │   ├── ApiResponse.java            # Standard generic response wrapper
-│   │   │           │   ├── CartItemRequestDto.java     # Add to cart payload
-│   │   │           │   ├── CartItemResponseDto.java    # Cart item output with subtotal
-│   │   │           │   ├── CartTotalResponseDto.java   # Cart total and grand summary
-│   │   │           │   ├── ProductRequestDto.java      # Add product payload with validation
-│   │   │           │   ├── ProductResponseDto.java     # Product output
-│   │   │           │   └── ResourceLinkDto.java        # Resource link output
-│   │   │           ├── entity/
-│   │   │           │   ├── CartItem.java               # JPA entity for cart_items table
-│   │   │           │   └── Product.java                # JPA entity for products table
-│   │   │           ├── exception/
-│   │   │           │   ├── BadRequestException.java    # 400 Bad Request exception
-│   │   │           │   ├── ErrorResponseDto.java       # Standardized error JSON model
-│   │   │           │   ├── GlobalExceptionHandler.java # @RestControllerAdvice handler
-│   │   │           │   └── ResourceNotFoundException.java # 404 Not Found exception
-│   │   │           ├── repository/
-│   │   │           │   ├── CartItemRepository.java     # Spring Data JPA for cart_items
-│   │   │           │   └── ProductRepository.java      # Spring Data JPA for products
-│   │   │           └── service/
-│   │   │               ├── CartService.java            # Shopping cart business rules
-│   │   │               ├── ProductService.java         # Product management business rules
-│   │   │               └── ResourceService.java        # External URLs resolution
-│   │   └── resources/
-│   │       ├── application.properties                  # MySQL and application settings
-│   │       └── schema.sql                              # Reference SQL table definitions
-│   └── test/
-│       └── java/
-│           └── com/
-│               └── electrohub/
-│                   └── ElectroHubApplicationTests.java # Context loading test
-└── README.md
+â”œâ”€â”€ pom.xml                                  # Maven dependencies and build configuration
+â”œâ”€â”€ postman/
+â”‚   â””â”€â”€ ElectroHub_Postman_Collection.json   # Ready-to-import Postman API collection
+â”œâ”€â”€ src/
+â”‚   â”œâ”€â”€ main/
+â”‚   â”‚   â”œâ”€â”€ java/
+â”‚   â”‚   â”‚   â””â”€â”€ com/
+â”‚   â”‚   â”‚       â””â”€â”€ electrohub/
+â”‚   â”‚   â”‚           â”œâ”€â”€ ElectroHubApplication.java       # Spring Boot main runner
+â”‚   â”‚   â”‚           â”œâ”€â”€ config/
+â”‚   â”‚   â”‚           â”‚   â”œâ”€â”€ DataInitializer.java        # Seeds initial sample electronics
+â”‚   â”‚   â”‚           â”‚   â””â”€â”€ ResourceConfig.java         # External URLs & Google Drive config
+â”‚   â”‚   â”‚           â”œâ”€â”€ controller/
+â”‚   â”‚   â”‚           â”‚   â”œâ”€â”€ CartController.java         # /api/cart endpoints
+â”‚   â”‚   â”‚           â”‚   â”œâ”€â”€ ProductController.java      # /api/products endpoints
+â”‚   â”‚   â”‚           â”‚   â””â”€â”€ ResourceController.java     # /api/resources endpoints
+â”‚   â”‚   â”‚           â”œâ”€â”€ dto/
+â”‚   â”‚   â”‚           â”‚   â”œâ”€â”€ ApiResponse.java            # Standard generic response wrapper
+â”‚   â”‚   â”‚           â”‚   â”œâ”€â”€ CartItemRequestDto.java     # Add to cart payload
+â”‚   â”‚   â”‚           â”‚   â”œâ”€â”€ CartItemResponseDto.java    # Cart item output with subtotal
+â”‚   â”‚   â”‚           â”‚   â”œâ”€â”€ CartTotalResponseDto.java   # Cart total and grand summary
+â”‚   â”‚   â”‚           â”‚   â”œâ”€â”€ ProductRequestDto.java      # Add product payload with validation
+â”‚   â”‚   â”‚           â”‚   â”œâ”€â”€ ProductResponseDto.java     # Product output
+â”‚   â”‚   â”‚           â”‚   â””â”€â”€ ResourceLinkDto.java        # Resource link output
+â”‚   â”‚   â”‚           â”œâ”€â”€ entity/
+â”‚   â”‚   â”‚           â”‚   â”œâ”€â”€ CartItem.java               # JPA entity for cart_items table
+â”‚   â”‚   â”‚           â”‚   â””â”€â”€ Product.java                # JPA entity for products table
+â”‚   â”‚   â”‚           â”œâ”€â”€ exception/
+â”‚   â”‚   â”‚           â”‚   â”œâ”€â”€ BadRequestException.java    # 400 Bad Request exception
+â”‚   â”‚   â”‚           â”‚   â”œâ”€â”€ ErrorResponseDto.java       # Standardized error JSON model
+â”‚   â”‚   â”‚           â”‚   â”œâ”€â”€ GlobalExceptionHandler.java # @RestControllerAdvice handler
+â”‚   â”‚   â”‚           â”‚   â””â”€â”€ ResourceNotFoundException.java # 404 Not Found exception
+â”‚   â”‚   â”‚           â”œâ”€â”€ repository/
+â”‚   â”‚   â”‚           â”‚   â”œâ”€â”€ CartItemRepository.java     # Spring Data JPA for cart_items
+â”‚   â”‚   â”‚           â”‚   â””â”€â”€ ProductRepository.java      # Spring Data JPA for products
+â”‚   â”‚   â”‚           â””â”€â”€ service/
+â”‚   â”‚   â”‚               â”œâ”€â”€ CartService.java            # Shopping cart business rules
+â”‚   â”‚   â”‚               â”œâ”€â”€ ProductService.java         # Product management business rules
+â”‚   â”‚   â”‚               â””â”€â”€ ResourceService.java        # External URLs resolution
+â”‚   â”‚   â””â”€â”€ resources/
+â”‚   â”‚       â”œâ”€â”€ application.properties                  # MySQL and application settings
+â”‚   â”‚       â””â”€â”€ schema.sql                              # Reference SQL table definitions
+â”‚   â””â”€â”€ test/
+â”‚       â””â”€â”€ java/
+â”‚           â””â”€â”€ com/
+â”‚               â””â”€â”€ electrohub/
+â”‚                   â””â”€â”€ ElectroHubApplicationTests.java # Context loading test
+â””â”€â”€ README.md
 ```
 
 ---
@@ -355,7 +355,7 @@ The application starts on: **`http://localhost:8081`**
 1. Open **Postman**.
 2. Click **Import** in the top left.
 3. Select the file located at: `d:\mini-project\postman\ElectroHub_Postman_Collection.json`.
-4. The collection **ElectroHub — Electronics Shopping Mini Project** will be loaded with all folders and pre-configured endpoints.
+4. The collection **ElectroHub â€” Electronics Shopping Mini Project** will be loaded with all folders and pre-configured endpoints.
 5. Make sure the application is running (`mvn spring-boot:run`), then execute requests sequentially.
 
 ---
@@ -374,5 +374,3 @@ The application starts on: **`http://localhost:8081`**
    - Custom formatting: DTOs allow calculated fields like `subtotal` without persisting them as columns.
 4. **How are External Links Managed?**
    - Configured cleanly via `application.properties` and injected via `@Value` in `ResourceConfig`, demonstrating centralized configuration management.
-#   E l e c t r o H u b  
- 

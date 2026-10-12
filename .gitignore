@@ -1,0 +1,38 @@
+# ========================================================
+# ElectroHub - Git Ignore Configuration
+# ========================================================
+
+# Sensitive Application Properties (Database Credentials)
+**/application.properties
+application.properties
+
+# Build / Compiled artifacts
+target/
+*.class
+
+# Log files
+*.log
+
+# Package Files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# IDE & Editor Settings
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+*.swp
+*.swo
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini

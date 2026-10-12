@@ -1,0 +1,31 @@
+# ========================================================
+# ElectroHub - Application Configuration Template
+# Copy this file to 'application.properties' and fill in your MySQL credentials
+# ========================================================
+
+# Server Port & Application Name
+spring.application.name=ElectroHub
+server.port=8081
+
+# MySQL Database Configuration
+spring.datasource.url=jdbc:mysql://localhost:3306/electrohub_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+spring.datasource.username=root
+spring.datasource.password=YOUR_MYSQL_PASSWORD_HERE
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# Spring Data JPA & Hibernate Configuration
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.open-in-view=false
+
+# External Resource Links & Google Drive Links
+resources.c-compiler=https://www.onlinegdb.com/online_c_compiler
+resources.simulation=https://wokwi.com/
+resources.circuit-simulation=https://www.tinkercad.com/circuits
+resources.component-info=https://www.wikipedia.org/
+resources.project-files=https://drive.google.com/drive/folders/sample-electrohub-project-source
+resources.documentation=https://drive.google.com/file/d/sample-electrohub-project-report-pdf/view
+
+# Jackson JSON Output Configuration
+spring.jackson.serialization.indent-output=true
