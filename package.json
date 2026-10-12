@@ -1,0 +1,12 @@
+{
+  "name": "electrohub",
+  "version": "1.0.0",
+  "description": "ElectroHub Electronics Shopping Mini Project",
+  "scripts": {
+    "dev": "node frontend/server.js",
+    "start": "node frontend/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

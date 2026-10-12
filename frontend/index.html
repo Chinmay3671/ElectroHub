@@ -24,106 +24,41 @@
             <a href="#resources">Resources</a>
         </nav>
 
+        <!-- Backend Connection Status Indicator -->
+        <div id="backend-status" class="status-bar status-checking">
+            Checking connection to Spring Boot backend (http://localhost:8081)...
+        </div>
+
+        <!-- Alert Notification Box -->
+        <div id="alert-msg" class="alert-msg"></div>
+
         <!-- Home Section -->
         <section id="home" class="box-section">
             <h2>Home</h2>
-            <p>Welcome to <strong>ElectroHub</strong>, a simple electronics shopping portal created as a college mini-project.</p>
+            <p>Welcome to <strong>ElectroHub</strong>, an electronics shopping portal created as a college mini-project.</p>
             <p>This web application showcases a catalog of fundamental electronic components such as microcontrollers, IoT boards, sensors, and prototyping accessories. Students and hobbyists can explore components, review technical descriptions, and simulate managing their electronics shopping cart.</p>
-            <p><strong>Project Note:</strong> This frontend provides a clean, visual representation of the store interface. The backend RESTful API is powered by Java Spring Boot and MySQL.</p>
+            <p><strong>System Architecture:</strong></p>
+            <ul>
+                <li><strong>Frontend:</strong> HTML5, CSS3, and JavaScript REST Client (Running on Port 3000)</li>
+                <li><strong>Backend:</strong> Java 17+, Spring Boot 3.2.5 RESTful Web Services (Running on Port 8081)</li>
+                <li><strong>Database:</strong> MySQL 8.0+ Persistence with Spring Data JPA &amp; Hibernate</li>
+            </ul>
         </section>
 
         <!-- Products Section -->
         <section id="products" class="box-section">
             <h2>Products Catalog</h2>
             <p>Browse through our collection of electronic hardware components below:</p>
-
-            <div class="product-list">
-
-                <!-- Product 1 -->
-                <div class="product-card">
-                    <h3>1. Arduino Uno R3</h3>
-                    <p><strong>Category:</strong> Microcontrollers</p>
-                    <p><strong>Description:</strong> ATmega328P microcontroller development board with 14 digital I/O pins and 6 analog inputs.</p>
-                    <p><strong>Price:</strong> $25.99</p>
-                    <div class="action-row">
-                        <label for="qty-1">Quantity:</label>
-                        <input type="number" id="qty-1" name="quantity-1" value="1" min="1">
-                        <button type="button" class="btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="product-card">
-                    <h3>2. Raspberry Pi 4 Model B (4GB)</h3>
-                    <p><strong>Category:</strong> Single Board Computers</p>
-                    <p><strong>Description:</strong> Quad-core 64-bit ARM Cortex-A72 processor, 4GB LPDDR4 RAM, dual 4K micro-HDMI display outputs.</p>
-                    <p><strong>Price:</strong> $75.00</p>
-                    <div class="action-row">
-                        <label for="qty-2">Quantity:</label>
-                        <input type="number" id="qty-2" name="quantity-2" value="1" min="1">
-                        <button type="button" class="btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="product-card">
-                    <h3>3. ESP32 NodeMCU Module</h3>
-                    <p><strong>Category:</strong> IoT & Wireless</p>
-                    <p><strong>Description:</strong> Dual-core 240MHz Wi-Fi and Bluetooth BLE IoT microcontroller development board.</p>
-                    <p><strong>Price:</strong> $8.50</p>
-                    <div class="action-row">
-                        <label for="qty-3">Quantity:</label>
-                        <input type="number" id="qty-3" name="quantity-3" value="1" min="1">
-                        <button type="button" class="btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card">
-                    <h3>4. MB102 Solderless Breadboard</h3>
-                    <p><strong>Category:</strong> Prototyping</p>
-                    <p><strong>Description:</strong> Standard 830 tie-points solderless breadboard with dual power distribution rails.</p>
-                    <p><strong>Price:</strong> $4.99</p>
-                    <div class="action-row">
-                        <label for="qty-4">Quantity:</label>
-                        <input type="number" id="qty-4" name="quantity-4" value="1" min="1">
-                        <button type="button" class="btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="product-card">
-                    <h3>5. HC-SR04 Ultrasonic Sensor</h3>
-                    <p><strong>Category:</strong> Sensors</p>
-                    <p><strong>Description:</strong> High accuracy non-contact ultrasonic distance measuring sensor (2cm to 400cm range).</p>
-                    <p><strong>Price:</strong> $3.25</p>
-                    <div class="action-row">
-                        <label for="qty-5">Quantity:</label>
-                        <input type="number" id="qty-5" name="quantity-5" value="1" min="1">
-                        <button type="button" class="btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="product-card">
-                    <h3>6. SG90 Micro Servo Motor (9g)</h3>
-                    <p><strong>Category:</strong> Motors & Actuators</p>
-                    <p><strong>Description:</strong> Compact 180-degree rotation micro servo motor suitable for robotics and hobby projects.</p>
-                    <p><strong>Price:</strong> $2.99</p>
-                    <div class="action-row">
-                        <label for="qty-6">Quantity:</label>
-                        <input type="number" id="qty-6" name="quantity-6" value="1" min="1">
-                        <button type="button" class="btn">Add to Cart</button>
-                    </div>
-                </div>
-
+            <div id="products-container" class="product-list">
+                <!-- Dynamically loaded from backend /api/products via app.js -->
+                <p style="color: #666;">Loading electronic products...</p>
             </div>
         </section>
 
         <!-- Shopping Cart Section -->
         <section id="cart" class="box-section">
             <h2>Shopping Cart</h2>
-            <p>Sample visual demonstration of items currently added to the cart:</p>
+            <p>Real-time shopping cart synced with Spring Boot cart endpoints (<code>/api/cart/*</code>):</p>
 
             <table class="cart-table">
                 <thead>
@@ -137,36 +72,17 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Arduino Uno R3</td>
-                        <td>Microcontrollers</td>
-                        <td>$25.99</td>
-                        <td>2</td>
-                        <td>$51.98</td>
-                        <td><button type="button" class="btn btn-remove">Remove</button></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>ESP32 NodeMCU Module</td>
-                        <td>IoT & Wireless</td>
-                        <td>$8.50</td>
-                        <td>3</td>
-                        <td>$25.50</td>
-                        <td><button type="button" class="btn btn-remove">Remove</button></td>
-                    </tr>
+                <tbody id="cart-table-body">
+                    <!-- Dynamically populated from backend /api/cart/items via app.js -->
                 </tbody>
             </table>
 
-            <div class="cart-summary">
-                <p><strong>Total Items in Cart:</strong> 2</p>
-                <p><strong>Total Quantity:</strong> 5 units</p>
-                <p class="grand-total"><strong>Grand Total:</strong> $77.48</p>
+            <div id="cart-summary" class="cart-summary">
+                <!-- Dynamically populated from backend /api/cart/total via app.js -->
             </div>
 
             <div class="cart-actions">
-                <button type="button" class="btn btn-clear">Clear Cart</button>
+                <button type="button" id="clear-cart-btn" class="btn btn-clear">Clear Cart</button>
             </div>
         </section>
 
@@ -174,7 +90,7 @@
         <section id="resources" class="box-section">
             <h2>Resources</h2>
             <p>Helpful external websites and online simulation tools for electronics students:</p>
-            <ul class="resource-list">
+            <ul id="resource-list" class="resource-list">
                 <li>
                     <strong>OnlineGDB C Compiler:</strong>
                     <a href="https://www.onlinegdb.com/online_c_compiler" target="_blank" rel="noopener noreferrer">https://www.onlinegdb.com/online_c_compiler</a>
@@ -205,5 +121,7 @@
 
     </div>
 
+    <!-- JavaScript REST API Integration -->
+    <script src="app.js"></script>
 </body>
 </html>

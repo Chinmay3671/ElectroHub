@@ -42,7 +42,7 @@ h1 {
     background-color: #f2f2f2;
     border: 1px solid #cccccc;
     padding: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .navbar a {
@@ -55,6 +55,59 @@ h1 {
 
 .navbar a:hover {
     text-decoration: underline;
+}
+
+/* Status Indicator Bar */
+.status-bar {
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    border: 1px solid #cccccc;
+}
+
+.status-checking {
+    background-color: #f9f9f9;
+    border-color: #cccccc;
+    color: #555555;
+}
+
+.status-online {
+    background-color: #e8f5e9;
+    border-color: #81c784;
+    color: #1b5e20;
+}
+
+.status-offline {
+    background-color: #fff8e1;
+    border-color: #ffe082;
+    color: #795548;
+}
+
+.status-bar code {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 2px 5px;
+    font-family: Consolas, monospace;
+}
+
+/* Alert Notification Box */
+.alert-msg {
+    display: none;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    border: 1px solid #cccccc;
+}
+
+.alert-success {
+    background-color: #e8f5e9;
+    border-color: #4caf50;
+    color: #1b5e20;
+}
+
+.alert-error {
+    background-color: #ffebee;
+    border-color: #e57373;
+    color: #b71c1c;
 }
 
 /* Section Box Styling */
